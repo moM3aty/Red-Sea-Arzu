@@ -1,0 +1,173 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Sea Arzu</title>
+
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/social-icons.css" asp-append-version="true"> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/images/logo.jpg" rel="icon" type="image/x-icon"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50">
+
+    <header class="hero-section h-screen min-h-[700px] flex flex-col text-white">
+        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 p-1 transition-all duration-300">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-3xl font-bold brand-text flex items-center gap-2" dir="ltr">
+                    <img src="~/images/logo.jpg" alt="Red Sea Arzu" width="80px;" style="border-radius:50%;">
+                </a>
+                <div class="hidden lg:flex items-center gap-5">
+                    <a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية" data-de="Heim" data-ro="Acasă">Home</a>
+                    <a href="#about" class="nav-link" data-en="About" data-ar="من نحن" data-de="Über uns" data-ro="Despre">About</a>
+                    <a href="#services" class="nav-link" data-en="Services" data-ar="الخدمات" data-de="Dienstleistungen" data-ro="Servicii">Services</a>
+                    <a href="#trips" class="nav-link" data-en="Trips" data-ar="الرحلات" data-de="Reisen" data-ro="Excursii">Trips</a>
+                    <a href="#gallery" class="nav-link" data-en="Gallery" data-ar="المعرض" data-de="Galerie" data-ro="Galerie">Gallery</a>
+                    <a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا" data-de="Kontakt" data-ro="Contact">Contact</a>
+                </div>
+                <div class="hidden lg:flex items-center gap-3">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag cursor-pointer" data-lang="en" title="English" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=EN';">
+                    <img src="https://flagcdn.com/w40/eg.png" alt="Arabic" class="lang-flag cursor-pointer" data-lang="ar" title="العربية" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=AR';">
+                    <img src="https://flagcdn.com/w40/de.png" alt="German" class="lang-flag cursor-pointer" data-lang="de" title="Deutsch" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=DE';">
+                    <img src="https://flagcdn.com/w40/ro.png" alt="Romanian" class="lang-flag cursor-pointer" data-lang="ro" title="Română" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=RO';">
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-white text-3xl z-[110]">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="mobile-menu-container">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-4xl z-[120]">&times;</button>
+            <a href="#home" class="nav-link-mobile text-2xl text-white" data-en="Home" data-ar="الرئيسية" data-de="Heim" data-ro="Acasă">Home</a>
+            <a href="#about" class="nav-link-mobile text-2xl text-white" data-en="About" data-ar="من نحن" data-de="Über uns" data-ro="Despre">About</a>
+            <a href="#services" class="nav-link-mobile text-2xl text-white" data-en="Services" data-ar="الخدمات" data-de="Dienstleistungen" data-ro="Servicii">Services</a>
+            <a href="#trips" class="nav-link-mobile text-2xl text-white" data-en="Trips" data-ar="الرحلات" data-de="Reisen" data-ro="Excursii">Trips</a>
+            <a href="#gallery" class="nav-link-mobile text-2xl text-white" data-en="Gallery" data-ar="المعرض" data-de="Galerie" data-ro="Galerie">Gallery</a>
+            <a href="#contact" class="nav-link-mobile text-2xl text-white" data-en="Contact" data-ar="اتصل بنا" data-de="Kontakt" data-ro="Contact">Contact</a>
+            <div class="flex items-center gap-5 pt-8">
+                <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag w-10 h-auto cursor-pointer" data-lang="en" title="English" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=EN';">
+                <img src="https://flagcdn.com/w40/eg.png" alt="Arabic" class="lang-flag w-10 h-auto cursor-pointer" data-lang="ar" title="العربية" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=AR';">
+                <img src="https://flagcdn.com/w40/de.png" alt="German" class="lang-flag w-10 h-auto cursor-pointer" data-lang="de" title="Deutsch" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=DE';">
+                <img src="https://flagcdn.com/w40/ro.png" alt="Romanian" class="lang-flag w-10 h-auto cursor-pointer" data-lang="ro" title="Română" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=RO';">
+            </div>
+        </div>
+
+        <div id="home" class="container mx-auto flex-grow flex flex-col items-center justify-center text-center px-4 z-10">
+            <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4" data-aos="fade-up" data-en="Your Red Sea Story Awaits" data-ar="قصتك في البحر الأحمر بانتظارك" data-de="Ihre Rotmeer-Geschichte wartet" data-ro="Povestea ta la Marea Roșie te așteaptă">Your Red Sea Story Awaits</h1>
+            <p class="text-lg md:text-xl max-w-3xl mb-8" data-aos="fade-up" data-aos-delay="200" data-en="Experience the magic of turquoise waters and golden sands. Unforgettable adventures, crafted just for you." data-ar="عِش سحر المياه الفيروزية والرمال الذهبية. مغامرات لا تُنسى، صُممت خصصاً لك." data-de="Erleben Sie die Magie von türkisfarbenem Wasser und goldenem Sand. Unvergessliche Abenteuer, nur für Sie gemacht." data-ro="Experimentați magia apelor turcoaz și a nisipurilor aurii. Aventuri de neuitat, create special pentru tine.">Experience the magic of turquoise waters and golden sands. Unforgettable adventures, crafted just for you.</p>
+            <a href="#trips" class="btn-wave" data-aos="fade-up" data-aos-delay="400">
+                <span data-en="Discover Tours" data-ar="اكتشف الرحلات" data-de="Touren entdecken" data-ro="Descoperă Tururi">Discover Tours</span>
+            </a>
+        </div>
+
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248, 250, 252, 0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248, 250, 252, 0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(248, 250, 252, 0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#f8fafc" />
+                </g>
+            </svg>
+        </div>
+        <partial name="_LoginPartial" />
+
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+    <footer class="site-footer">
+        <div class="footer-waves-container">
+            <svg class="footer-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="footer-gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="footer-parallax">
+                    <use xlink:href="#footer-gentle-wave" x="48" y="0" />
+                    <use xlink:href="#footer-gentle-wave" x="48" y="3" />
+                    <use xlink:href="#footer-gentle-wave" x="48" y="5" />
+                    <use xlink:href="#footer-gentle-wave" x="48" y="7" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 pt-12 pb-8 text-white relative z-10 ">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+                <div class="footer-col" data-aos="fade-up">
+                    <h3 class="footer-brand flex items-center gap-2">
+                        <img src="~/images/logo.jpg" alt="Red Sea Arzu" width="100px;" style="border-radius:50%;">
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-6" data-en="Crafting unforgettable sea adventures in the heart of the Red Sea. Your story starts here." data-ar="صياغة مغامرات بحرية لا تُنسى في قلب البحر الأحمر. قصتك تبدأ هنا." data-de="Unvergessliche Meeresabenteuer im Herzen des Roten Meeres gestalten. Ihre Geschichte beginnt hier." data-ro="Crearea de aventuri maritime de neuitat în inima Mării Roșii. Povestea ta începe aici.">Crafting unforgettable sea adventures...</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.instagram.com/adem_l24?igsh=ZGxnNGw3eWJvNXU3" class="social-icon-footer instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1ChcBdd7NM/" class="social-icon-footer facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/201006129818" class="social-icon-footer whatsapp"><i class="fab fa-whatsapp whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="footer-heading" data-en="Quick Links" data-ar="روابط سريعة" data-de="Schnelllinks" data-ro="Linkuri rapide">Quick Links</h4>
+                    <ul class="footer-list ">
+                        <li><a href="#about" class="footer-link" data-en="About Us" data-ar="من نحن" data-de="Über uns" data-ro="Despre noi">About Us</a></li>
+                        <li><a href="#trips" class="footer-link" data-en="Our Trips" data-ar="رحلاتنا" data-de="Unsere Reisen" data-ro="Excursiile noastre">Our Trips</a></li>
+                        <li><a href="#gallery" class="footer-link" data-en="Gallery" data-ar="المعرض" data-de="Galerie" data-ro="Galerie">Gallery</a></li>
+                        <li><a href="#contact" class="footer-link" data-en="Contact" data-ar="اتصل بنا" data-de="Kontakt" data-ro="Contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="footer-heading" data-en="Our Services" data-ar="خدماتنا" data-de="Unsere Dienstleistungen" data-ro="Serviciile noastre">Our Services</h4>
+                    <ul class="footer-list">
+                        <li><a href="#services" class="footer-link" data-en="Scuba Diving" data-ar="الغوص" data-de="Tauchen" data-ro="Scufundări">Scuba Diving</a></li>
+                        <li><a href="#services" class="footer-link" data-en="Yacht Charters" data-ar="استئجار اليخوت" data-de="Yachtcharter" data-ro="Închirieri de iahturi">Yacht Charters</a></li>
+                        <li><a href="#services" class="footer-link" data-en="Fishing Trips" data-ar="رحلات صيد" data-de="Angelausflüge" data-ro="Excursii de pescuit">Fishing Trips</a></li>
+                        <li><a href="#services" class="footer-link" data-en="Island Hopping" data-ar="التنقل بين الجزر" data-de="Inselhüpfen" data-ro="Excursii pe insule">Island Hopping</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 mt-12 pt-6 text-center text-gray-400 text-sm flex justify-evenly">
+                <div>
+                    <p> Red Sea Arzu &copy; <span id="currentYear">2025</span>. All Rights Reserved. </p>
+                </div>
+                <div>
+                    <p>Design and programming by <strong>GMTWEB</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <button id="scrollToTopBtn" class="hidden fixed bottom-5 right-5 bg-accent-gold text-white w-12 h-12 rounded-full shadow-lg z-50 flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <button id="whatsapp-fab" class="fixed bottom-5 left-5 w-14 h-14 rounded-full shadow-lg z-50 flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110">
+        <i class="fab fa-whatsapp text-3xl text-white"></i>
+    </button>
+
+    <div id="notification" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 text-white py-2 px-6 rounded-full shadow-lg z-50">
+        <p id="notification-message"></p>
+    </div>
+
+    <div id="gallery-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-0 z-[99] transition-all duration-500 ease-in-out pointer-events-none"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

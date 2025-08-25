@@ -1,0 +1,119 @@
+﻿@model RedSeaArzu.Models.Trip
+
+@{
+    ViewData["Title"] = "إضافة رحلة جديدة";
+    Layout = "_AdminLayout";
+}
+
+<div class="fade-in-up">
+    <form asp-action="CreateTrip" method="post" enctype="multipart/form-data" class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
+        <div class="flex justify-between items-center mb-6 pb-6 border-b border-gray-200">
+            <h1 class="text-2xl font-bold text-gray-800">إنشاء رحلة جديدة</h1>
+            <div class="flex items-center gap-4">
+                <a asp-action="Trips" class="btn btn-secondary">إلغاء</a>
+                <button type="submit" class="btn btn-primary">حفظ ونشر الرحلة</button>
+            </div>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4 p-3 bg-red-50 rounded-md"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1">
+                <h3 class="text-lg font-semibold text-gray-700 mb-2">صورة الرحلة</h3>
+                <p class="text-sm text-gray-500 mb-4">اختر صورة جذابة تمثل الرحلة.</p>
+                <div class="mt-1">
+                    <div id="image-preview-container" class="cursor-pointer w-full h-64 bg-gray-50 rounded-md flex items-center justify-center border-2 border-dashed border-gray-300 hover:border-primary-color transition-colors">
+                        <div id="image-placeholder" class="text-center text-gray-500">
+                            <i class="fas fa-camera text-4xl mb-2"></i>
+                            <p>اسحب الصورة إلى هنا أو انقر للاختيار</p>
+                        </div>
+                        <img id="image-preview" src="#" alt="Image Preview" class="hidden w-full h-full object-cover rounded-md" />
+                    </div>
+                    <input type="file" name="imageFile" id="imageFile" class="hidden" accept="image/*" />
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <div class="form-group">
+                    <label asp-for="Price" class="form-label">السعر ($)</label>
+                    <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="e.g., 55.00" />
+                </div>
+                <hr class="my-6" />
+
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">تفاصيل الرحلة (متعدد اللغات)</h3>
+                <div class="tabs-nav">
+                    <a href="#" class="tab-link active" data-tab="en">English</a>
+                    <a href="#" class="tab-link" data-tab="ar">العربية</a>
+                    <a href="#" class="tab-link" data-tab="de">Deutsch</a>
+                    <a href="#" class="tab-link" data-tab="ro">Română</a>
+                </div>
+
+                <div class="pt-4">
+                    <div id="en-pane" class="tab-pane active space-y-4">
+                        <div class="form-group"><label asp-for="NameEn" class="form-label">Trip Name</label><input asp-for="NameEn" class="form-control" /></div>
+                        <div class="form-group"><label asp-for="DescriptionEn" class="form-label">Description</label><textarea asp-for="DescriptionEn" rows="4" class="form-control"></textarea></div>
+                    </div>
+                    <div id="ar-pane" class="tab-pane space-y-4">
+                        <div class="form-group"><label asp-for="NameAr" class="form-label">اسم الرحلة</label><input asp-for="NameAr" class="form-control" dir="rtl" /></div>
+                        <div class="form-group"><label asp-for="DescriptionAr" class="form-label">الوصف</label><textarea asp-for="DescriptionAr" rows="4" class="form-control" dir="rtl"></textarea></div>
+                    </div>
+                    <div id="de-pane" class="tab-pane space-y-4">
+                        <div class="form-group"><label asp-for="NameDe" class="form-label">Reisename</label><input asp-for="NameDe" class="form-control" /></div>
+                        <div class="form-group"><label asp-for="DescriptionDe" class="form-label">Beschreibung</label><textarea asp-for="DescriptionDe" rows="4" class="form-control"></textarea></div>
+                    </div>
+                    <div id="ro-pane" class="tab-pane space-y-4">
+                        <div class="form-group"><label asp-for="NameRo" class="form-label">Numele excursiei</label><input asp-for="NameRo" class="form-control" /></div>
+                        <div class="form-group"><label asp-for="DescriptionRo" class="form-label">Descriere</label><textarea asp-for="DescriptionRo" rows="4" class="form-control"></textarea></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-link');
+            const panes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const targetPaneId = this.dataset.tab + '-pane';
+                    panes.forEach(p => {
+                        if (p.id === targetPaneId) {
+                            p.classList.add('active');
+                        } else {
+                            p.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const imageFileInput = document.getElementById('imageFile');
+            const imagePreviewContainer = document.getElementById('image-preview-container');
+            const imagePreview = document.getElementById('image-preview');
+            const imagePlaceholder = document.getElementById('image-placeholder');
+
+            imagePreviewContainer.addEventListener('click', () => imageFileInput.click());
+
+            imageFileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview.classList.remove('hidden');
+                        imagePlaceholder.classList.add('hidden');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+}

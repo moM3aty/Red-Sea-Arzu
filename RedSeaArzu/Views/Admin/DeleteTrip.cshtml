@@ -1,0 +1,40 @@
+﻿@model RedSeaArzu.Models.Trip
+
+@{
+    ViewData["Title"] = "تأكيد الحذف";
+    Layout = "_AdminLayout";
+}
+
+<div class="fade-in-up max-w-2xl mx-auto">
+    <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+        <div class="mx-auto bg-red-100 w-20 h-20 rounded-full flex items-center justify-center">
+            <i class="fas fa-trash-alt text-4xl text-red-500"></i>
+        </div>
+
+        <h1 class="text-2xl font-bold text-gray-800 mt-6">تأكيد حذف الرحلة</h1>
+        <p class="text-gray-600 mt-2 mb-6">
+            هل أنت متأكد من رغبتك في حذف هذه الرحلة نهائياً؟ <br /> لا يمكن التراجع عن هذا الإجراء.
+        </p>
+
+        <div class="my-6 p-4 bg-gray-50 rounded-lg border flex items-center gap-4 text-right">
+            <img src="@(Model.ImageUrl ?? "https://placehold.co/100x100/e2e8f0/94a3b8?text=No+Image")"
+                 alt="@Model.NameEn"
+                 class="w-20 h-20 object-cover rounded-md flex-shrink-0" />
+            <div>
+                <p class="font-bold text-lg text-gray-900">@Model.NameEn</p>
+                <p class="text-gray-600">السعر: $@Model.Price.ToString("F2")</p>
+            </div>
+        </div>
+
+        <form asp-action="DeleteTrip" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="flex justify-center gap-4 mt-8">
+                <a asp-action="Trips" class="btn btn-secondary">إلغاء</a>
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <span>نعم، قم بالحذف</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

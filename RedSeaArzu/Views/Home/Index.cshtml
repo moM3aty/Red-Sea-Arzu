@@ -1,0 +1,217 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="about" class="py-20 bg-slate-50 section-bg-pattern">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="The Arzu Difference" data-ar="ما يميزنا في Arzu" data-de="Der Arzu-Unterschied" data-ro="Diferența Arzu">The Arzu Difference</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="We don't just offer trips; we craft experiences. With years of expertise and a deep love for the sea, we promise you a journey filled with wonder, safety, and personalized care." data-ar="نحن لا نقدم رحلات فحسب، بل نصنع تجارب لا تُنسى. بسنوات من الخبرة والحب العميق للبحر، نعدك برحلة مليئة بالدهشة والأمان والاهتمام الشخصي." data-de="Wir bieten nicht nur Ausflüge an; wir schaffen Erlebnisse. Mit jahrelanger Erfahrung und einer tiefen Liebe zum Meer versprechen wir Ihnen eine Reise voller Wunder, Sicherheit und persönlicher Betreuung." data-ro="Nu oferim doar excursii; creăm experiențe. Cu ani de experiență și o dragoste profundă pentru mare, vă promitem o călătorie plină de minuni, siguranță și îngrijire personalizată.">We don't just offer trips; we craft experiences...</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right" class="relative">
+                <img src="~/images/about.jpg" alt="Happy tourists on a boat" class="rounded-2xl shadow-xl w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/006064/ffffff?text=Arzu+Adventures';">
+                <div class="absolute -bottom-5 -right-5 w-32 h-32 bg-accent-gold rounded-full z-[-1] opacity-50" data-aos="zoom-in" data-aos-delay="300"></div>
+                <div class="absolute -top-5 -left-5 w-32 h-32 bg-primary-light rounded-full z-[-1] opacity-50" data-aos="zoom-in" data-aos-delay="300"></div>
+            </div>
+            <div data-aos="fade-left" class="space-y-6">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-ship"></i></div>
+                    <div>
+                        <h3 class="feature-title" data-en="Expert-Led Journeys" data-ar="رحلات بقيادة خبراء" data-de="Von Experten geführte Reisen" data-ro="Călătorii conduse de experți">Expert-Led Journeys</h3>
+                        <p class="text-gray-600" data-en="Our guides are seasoned sea lovers who know the hidden gems of the Red Sea." data-ar="مرشدونا هم من عشاق البحر المتمرسين الذين يعرفون كنوز البحر الأحمر الخفية." data-de="Unsere Guides sind erfahrene Meeresliebhaber, die die verborgenen Schätze des Roten Meeres kennen." data-ro="Ghizii noștri sunt iubitori de mare experimentați, care cunosc bijuteriile ascunse ale Mării Roșii.">Our guides are seasoned sea lovers who know the hidden gems of the Red Sea.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h3 class="feature-title" data-en="Safety is Our Priority" data-ar="السلامة هي أولويتنا" data-de="Sicherheit ist unsere Priorität" data-ro="Siguranța este prioritatea noastră">Safety is Our Priority</h3>
+                        <p class="text-gray-600" data-en="We adhere to the highest safety standards to ensure you can relax and enjoy your adventure." data-ar="نلتزم بأعلى معايير السلامة لنضمن لك الاسترخاء والاستمتاع بمغامرتك." data-de="Wir halten uns an die höchsten Sicherheitsstandards, damit Sie sich entspannen und Ihr Abenteuer genießen können." data-ro="Respectăm cele mai înalte standarde de siguranță pentru a ne asigura că vă puteți relaxa și bucura de aventură.">We adhere to the highest safety standards to ensure you can relax and enjoy your adventure.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <div>
+                        <h3 class="feature-title" data-en="Tailored Experiences" data-ar="تجارب مخصصة" data-de="Maßgeschneiderte Erlebnisse" data-ro="Experiențe personalizate">Tailored Experiences</h3>
+                        <p class="text-gray-600" data-en="From private yacht charters to group snorkeling trips, we customize every detail for you." data-ar="من استئجار اليخوت الخاصة إلى رحلات الغطس الجماعية، نقوم بتخصيص كل التفاصيل من أجلك." data-de="Von privaten Yachtchartern bis hin zu Gruppenschnorchelausflügen passen wir jedes Detail für Sie an." data-ro="De la închirieri de iahturi private la excursii de snorkeling în grup, personalizăm fiecare detaliu pentru dvs.">From private yacht charters to group snorkeling trips, we customize every detail for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Our Premier Services" data-ar="خدماتنا المتميزة" data-de="Unsere Premium-Services" data-ro="Serviciile noastre premium">Our Premier Services</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Adventures tailored for every sea enthusiast." data-ar="مغامرات مصممة لكل محب للبحر." data-de="Abenteuer für jeden Meeresliebhaber." data-ro="Aventuri personalizate pentru fiecare pasionat de mare.">Adventures tailored for every sea enthusiast.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-water"></i></div>
+                <h3 class="text-xl font-bold mt-6 mb-2 text-primary-dark" data-en="Scuba Diving" data-ar="الغوص" data-de="Tauchen" data-ro="Scufundări">Scuba Diving</h3>
+                <p class="text-gray-600" data-en="Explore vibrant coral reefs and marine life with our certified instructors." data-ar="استكشف الشعاب المرجانية النابضة بالحياة والحياة البحرية مع مدربينا المعتمدين." data-de="Erkunden Sie lebendige Korallenriffe und Meereslebewesen mit unseren zertifizierten Tauchlehrern." data-ro="Explorați recifele de corali vibrante și viața marină cu instructorii noștri certificați.">Explore vibrant coral reefs and marine life with our certified instructors.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-anchor"></i></div>
+                <h3 class="text-xl font-bold mt-6 mb-2 text-primary-dark" data-en="Yacht Charters" data-ar="استئجار اليخوت" data-de="Yachtcharter" data-ro="Închirieri de iahturi">Yacht Charters</h3>
+                <p class="text-gray-600" data-en="Sail in style on our luxury yachts. Perfect for private parties or a quiet day out." data-ar="أبحر بأناقة على يخوتنا الفاخرة. مثالية للحفلات الخاصة أو قضاء يوم هادئ." data-de="Segeln Sie stilvoll auf unseren Luxusyachten. Perfekt für private Feiern oder einen ruhigen Tag." data-ro="Navigați cu stil pe iahturile noastre de lux. Perfect pentru petreceri private sau o zi liniștită.">Sail in style on our luxury yachts. Perfect for private parties or a quiet day out.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-fish"></i></div>
+                <h3 class="text-xl font-bold mt-6 mb-2 text-primary-dark" data-en="Fishing Trips" data-ar="رحلات صيد" data-de="Angelausflüge" data-ro="Excursii de pescuit">Fishing Trips</h3>
+                <p class="text-gray-600" data-en="Join our experienced crew for a deep-sea fishing adventure you'll never forget." data-ar="انضم إلى طاقمنا المتمرس في مغامرة صيد في أعماق البحار لن تنساها أبدًا." data-de="Begleiten Sie unsere erfahrene Crew zu einem unvergesslichen Hochseeangelabenteuer." data-ro="Alăturați-vă echipajului nostru experimentat pentru o aventură de pescuit în larg pe care nu o veți uita niciodată.">Join our experienced crew for a deep-sea fishing adventure you'll never forget.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
+                <h3 class="text-xl font-bold mt-6 mb-2 text-primary-dark" data-en="Island Escapes" data-ar="جزر ساحرة" data-de="Insel-Fluchten" data-ro="Evadări pe insulă">Island Escapes</h3>
+                <p class="text-gray-600" data-en="Unwind on the pristine sandy beaches of the Red Sea's most beautiful islands." data-ar="استرخِ على الشواطئ الرملية البكر لأجمل جزر البحر الأحمر." data-de="Entspannen Sie an den unberührten Sandstränden der schönsten Inseln des Roten Meeres." data-ro="Relaxați-vă pe plajele cu nisip fin ale celor mai frumoase insule din Marea Roșie.">Unwind on the pristine sandy beaches of the Red Sea's most beautiful islands.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="trips" class="py-20 bg-slate-50 section-bg-pattern">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Our Signature Trips" data-ar="رحلاتنا المميزة">رحلاتنا المميزة</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Embark on an adventure that speaks to your soul." data-ar="انطلق في مغامرة تخاطب روحك.">انطلق في مغامرة تخاطب روحك.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            @foreach (var trip in Model.Trips)
+            {
+                <div class="trip-card" data-aos="fade-up" data-trip-id="@trip.Id">
+                    <div class="image-container">
+                        <img src="@(string.IsNullOrEmpty(trip.ImageUrl) ? "https://placehold.co/600x600/0369a1/ffffff?text=Arzu" : trip.ImageUrl)" alt="@trip.NameEn" class="card-image">
+
+                        <div class="hover-content">
+                            <p class="trip-card-desc" data-en="@trip.DescriptionEn" data-ar="@trip.DescriptionAr" data-de="@trip.DescriptionDe" data-ro="@trip.DescriptionRo">@trip.DescriptionEn</p>
+                            <button class="btn-trip details-btn" data-en="Details" data-ar="التفاصيل" data-de="Details" data-ro="Detalii">التفاصيل</button>
+                        </div>
+                    </div>
+
+                    <div class="static-title">
+                        <h3 class="trip-card-name" data-en="@trip.NameEn" data-ar="@trip.NameAr" data-de="@trip.NameDe" data-ro="@trip.NameRo">@trip.NameEn</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Stories from the Sea" data-ar="حكايات من البحر">Stories from the Sea</h2>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-8">
+            @foreach (var testimonial in Model.Testimonials)
+            {
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-quote">“</div>
+                    <p class="relative z-10 text-gray-700 italic">@testimonial.Message</p>
+                    <div class="mt-4 font-bold text-primary-dark">@testimonial.Name</div>
+                    <div class="text-sm text-gray-500">@testimonial.Country</div>
+                </div>
+            }
+        </div>
+
+        <div class="mt-20 text-center">
+            <h3 class="section-heading text-2xl md:text-3xl" data-aos="fade-up" data-en="Share Your Own Story" data-ar="شاركنا قصتك">Share Your Own Story</h3>
+        </div>
+
+        <div class="testimonial-form-wrapper mt-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <form id="testimonialForm" asp-controller="Home" asp-action="SubmitTestimonial" method="post" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <input type="text" id="testimonialName" name="Name" class="form-input-testimonial" placeholder="Your Name" required data-placeholder-en="Your Name" data-placeholder-ar="اسمك" data-placeholder-de="Dein Name" data-placeholder-ro="Numele tău">
+                    <input type="text" id="testimonialCountry" name="Country" class="form-input-testimonial" placeholder="Country (e.g., London, UK)" required data-placeholder-en="Country (e.g., London, UK)" data-placeholder-ar="بلدك (مثال: القاهرة، مصر)" data-placeholder-de="Land (z.B. Berlin, DE)" data-placeholder-ro="Țara (ex. București, RO)">
+                </div>
+                <textarea id="testimonialMessage" name="Message" rows="4" class="form-input-testimonial" placeholder="Your Review" required data-placeholder-en="Your Review" data-placeholder-ar="اكتب رأيك هنا..." data-placeholder-de="Deine Bewertung" data-placeholder-ro="Recenzia ta"></textarea>
+                <button type="submit" class="btn-wave w-full">
+                    <span data-en="Submit Review" data-ar="إرسال الرأي" data-de="Bewertung abgeben" data-ro="Trimite recenzia">Submit Review</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="py-20 bg-slate-50 section-bg-pattern overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Moments We've Created" data-ar="لحظات صنعناها" data-de="Momente, die wir geschaffen haben" data-ro="Momente pe care le-am creat">Moments We've Created</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="A glimpse into the unforgettable experiences our guests have enjoyed." data-ar="لمحة عن التجارب التي لا تنسى التي استمتع بها ضيوفنا." data-de="Ein Einblick in die unvergesslichen Erlebnisse, die unsere Gäste genossen haben." data-ro="O privire asupra experiențelor de neuitat de care s-au bucurat oaspeții noștri.">A glimpse into the unforgettable experiences our guests have enjoyed.</p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="scattered-photos">
+                <div class="photo-card"><img src="./images/6.JPG" alt="Sea view" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00acc1/ffffff?text=View';"></div>
+                <div class="photo-card"><img src="./images/10.jpg" alt="Diver" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00acc1/ffffff?text=Diver';"></div>
+                <div class="photo-card"><img src="./images/4.JPG" alt="Swinging over water" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00acc1/ffffff?text=Fun';"></div>
+                <div class="photo-card"><img src="./images/15.jpeg" alt="Sunset" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00acc1/ffffff?text=Sunset';"></div>
+                <div class="photo-card"><img src="./images/16.JPG" alt="Boat on turquoise water" onerror="this.onerror=null;this.src='https://placehold.co/400x550/00acc1/ffffff?text=Boat';"></div>
+                <div class="photo-card"><img src="./images/1.jpg" alt="Beach from above" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00acc1/ffffff?text=Beach';"></div>
+                <div class="photo-card"><img src="./images/about.JPG" alt="Beach resort" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00acc1/ffffff?text=Resort';"></div>
+                <div class="photo-card"><img src="./images/11.JPG" alt="Yacht at sea" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00acc1/ffffff?text=Yacht';"></div>
+                <div class="photo-card"><img src="./images/8.JPG" alt="Snorkeling adventure" onerror="this.onerror=null;this.src='https://placehold.co/600x450/00acc1/ffffff?text=Snorkel';"></div>
+                <div class="photo-card"><img src="./images/12.JPG" alt="Relaxing on a boat" onerror="this.onerror=null;this.src='https://placehold.co/550x400/00acc1/ffffff?text=Relax';"></div>
+                <div class="photo-card"><img src="./images/13.JPG" alt="Couple on the beach" onerror="this.onerror=null;this.src='https://placehold.co/400x650/00acc1/ffffff?text=Love';"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="contact-background"></div>
+    <div class="container mx-auto px-4 py-20 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white" data-aos="fade-right">
+                <h2 class="section-heading-light text-4xl md:text-5xl" data-en="Ready to Set Sail?" data-ar="هل أنت مستعد للإبحار؟" data-de="Bereit zum Segelsetzen?" data-ro="Gata de plecare?">Ready to Set Sail?</h2>
+                <p class="mt-4 text-lg text-gray-200 max-w-lg" data-en="Get in touch with us to plan your next adventure. We're excited to welcome you aboard!" data-ar="تواصل معنا لتخطيط مغامرتك القادمة. نحن متحمسون للترحيب بك على متن رحلاتنا!" data-de="Nehmen Sie Kontakt mit uns auf, um Ihr nächstes Abenteuer zu planen. Wir freuen uns, Sie an Bord begrüßen zu dürfen!" data-ro="Contactați-ne pentru a vă planifica următoarea aventură. Suntem încântați să vă primim la bord!">Get in touch with us to plan your next adventure. We're excited to welcome you aboard!</p>
+                <div class="mt-8 space-y-6 contact-info">
+                    <a href="tel:+201006129818" class="contact-info-link">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+201006129818</span>
+                    </a>
+                    <a href="mailto:Info@RedSeaArzu.com" class="contact-info-link">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>Info@RedSeaArzu.com</span>
+                    </a>
+                    <a href="#" class="contact-info-link">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>123 Marina Blvd, Hurghada, Egypt</span>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
+                <form id="contactForm" class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center" data-en="Send Us a Message" data-ar="أرسل لنا رسالة" data-de="Senden Sie uns eine Nachricht" data-ro="Trimite-ne un mesaj">Send Us a Message</h3>
+                    <div class="input-group">
+                        <input type="text" id="UserName" class="form-input" required>
+                        <label for="UserName" class="form-label" data-en="Your Name" data-ar="اسمك" data-de="Ihr Name" data-ro="Numele tău">Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="UserEmail" class="form-input" required>
+                        <label for="UserEmail" class="form-label" data-en="Your Email" data-ar="بريدك الإلكتروني" data-de="Ihre E-Mail" data-ro="Emailul tău">Your Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" rows="4" class="form-input" required></textarea>
+                        <label for="message" class="form-label" data-en="Your Message" data-ar="رسالتك" data-de="Ihre Nachricht" data-ro="Mesajul tău">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn-wave w-full">
+                        <span data-en="Send Message" data-ar="إرسال رسالة" data-de="Nachricht senden" data-ro="Trimite mesaj">Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="trip-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div id="modal-content" class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
+    </div>
+</div>

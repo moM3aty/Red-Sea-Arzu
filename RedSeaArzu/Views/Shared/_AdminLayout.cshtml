@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - لوحة التحكم</title>
+    <link href="~/images/logo.jpg" rel="icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body class="bg-slate-100 font-[Cairo]">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="~/images/logo.jpg" alt="Logo" class="w-50 h-50 rounded-full" />
+        </div>
+        <nav class="sidebar-nav">
+            @{
+                var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+            }
+            <a asp-controller="Admin" asp-action="Index" class="nav-item @(currentAction == "Index" ? "active" : "")">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>لوحة التحكم</span>
+            </a>
+            <a asp-controller="Admin" asp-action="Trips" class="nav-item @(currentAction == "Trips" || currentAction == "CreateTrip" || currentAction == "EditTrip" ? "active" : "")">
+                <i class="fas fa-ship"></i>
+                <span>إدارة الرحلات</span>
+            </a>
+            <a asp-controller="Admin" asp-action="PendingTestimonials" class="nav-item @(currentAction == "PendingTestimonials" ? "active" : "")">
+                <i class="fas fa-comment-dots"></i>
+                <span>مراجعة الآراء</span>
+            </a>
+
+            <div class="mt-auto">
+                <a asp-controller="Home" asp-action="Index" class="nav-item">
+                    <i class="fas fa-globe"></i>
+                    <span>العودة للموقع</span>
+                </a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+                        <button type="submit" class="nav-item w-full text-right">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>تسجيل الخروج</span>
+                        </button>
+                    </form>
+                }
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <h2 class="text-xl font-semibold text-gray-700">@ViewData["Title"]</h2>
+          
+        </header>
+
+        <main class="p-6 md:p-8">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
