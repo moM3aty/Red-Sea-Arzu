@@ -1,0 +1,355 @@
+﻿@model TripDetailsViewModel
+@using System.Text.RegularExpressions
+
+@{
+    ViewData["Title"] = Model.SelectedTrip.NameEn;
+    Func<string, List<string>> GetItems = (input) =>
+    {
+        if (string.IsNullOrWhiteSpace(input)) return new List<string>();
+        return Regex.Split(input, @"\r?\n").Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+    };
+}
+
+<!-- Hero Section -->
+<section class="trip-hero" style="background-image: url('@(string.IsNullOrEmpty(Model.SelectedTrip.ImageUrl) ? "https://placehold.co/1920x800/0369a1/ffffff?text=Arzu" : Model.SelectedTrip.ImageUrl)')">
+    <div class="trip-hero-overlay">
+        <div class="container mx-auto px-4 text-center text-white" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4"
+                data-en="@Model.SelectedTrip.NameEn"
+                data-ar="@Model.SelectedTrip.NameAr"
+                data-de="@Model.SelectedTrip.NameDe"
+                data-ro="@Model.SelectedTrip.NameRo"
+                data-it="@Model.SelectedTrip.NameIt">
+                @Model.SelectedTrip.NameEn
+            </h1>
+            <div class="flex items-center justify-center gap-2 text-lg text-gray-200">
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-en="@Model.SelectedTrip.LocationEn"
+                      data-ar="@Model.SelectedTrip.LocationAr"
+                      data-de="@Model.SelectedTrip.LocationDe"
+                      data-ro="@Model.SelectedTrip.LocationRo"
+                      data-it="@Model.SelectedTrip.LocationIt">
+                    @Model.SelectedTrip.LocationEn
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section class="py-16 lg:py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
+
+            <!-- Left Column: Details -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="content-card" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="details-heading" data-en="About The Trip" data-ar="عن الرحلة" data-de="Über die Reise" data-ro="Despre Excursie" data-it="Sul Viaggio">About The Trip</h2>
+                    <p class="text-gray-600 leading-relaxed"
+                       data-en="@Model.SelectedTrip.DescriptionEn"
+                       data-ar="@Model.SelectedTrip.DescriptionAr"
+                       data-de="@Model.SelectedTrip.DescriptionDe"
+                       data-ro="@Model.SelectedTrip.DescriptionRo"
+                       data-it="@Model.SelectedTrip.DescriptionIt">
+                        @Model.SelectedTrip.DescriptionEn
+                    </p>
+                </div>
+
+                <div class="content-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="list-heading included">
+                                <i class="fas fa-check-circle"></i>
+                                <span data-en="What's Included" data-ar="ما تشمله الرحلة" data-de="Was ist inbegriffen" data-ro="Ce este inclus" data-it="Cosa è incluso">What's Included</span>
+                            </h3>
+                            <ul class="styled-list">
+                                @foreach (var item in GetItems(Model.SelectedTrip.IncludesEn))
+                                {
+                                    <li>
+                                        <span data-en="@item"
+                                              data-ar="@GetItems(Model.SelectedTrip.IncludesAr).ElementAtOrDefault(GetItems(Model.SelectedTrip.IncludesEn).IndexOf(item))"
+                                              data-de="@GetItems(Model.SelectedTrip.IncludesDe).ElementAtOrDefault(GetItems(Model.SelectedTrip.IncludesEn).IndexOf(item))"
+                                              data-ro="@GetItems(Model.SelectedTrip.IncludesRo).ElementAtOrDefault(GetItems(Model.SelectedTrip.IncludesEn).IndexOf(item))"
+                                              data-it="@GetItems(Model.SelectedTrip.IncludesIt).ElementAtOrDefault(GetItems(Model.SelectedTrip.IncludesEn).IndexOf(item))">
+                                            @item
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="list-heading excluded">
+                                <i class="fas fa-times-circle"></i>
+                                <span data-en="What's Excluded" data-ar="ما لا تشمله الرحلة" data-de="Was ist nicht inbegriffen" data-ro="Ce nu este inclus" data-it="Cosa non è incluso">What's Excluded</span>
+                            </h3>
+                            <ul class="styled-list">
+                                @foreach (var item in GetItems(Model.SelectedTrip.ExcludesEn))
+                                {
+                                    <li>
+                                        <span data-en="@item"
+                                              data-ar="@GetItems(Model.SelectedTrip.ExcludesAr).ElementAtOrDefault(GetItems(Model.SelectedTrip.ExcludesEn).IndexOf(item))"
+                                              data-de="@GetItems(Model.SelectedTrip.ExcludesDe).ElementAtOrDefault(GetItems(Model.SelectedTrip.ExcludesEn).IndexOf(item))"
+                                              data-ro="@GetItems(Model.SelectedTrip.ExcludesRo).ElementAtOrDefault(GetItems(Model.SelectedTrip.ExcludesEn).IndexOf(item))"
+                                              data-it="@GetItems(Model.SelectedTrip.ExcludesIt).ElementAtOrDefault(GetItems(Model.SelectedTrip.ExcludesEn).IndexOf(item))">
+                                            @item
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Booking Box -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-28" data-aos="fade-up">
+                    <div class="booking-card">
+                        <div class="price-section">
+                            @if (Model.SelectedTrip.PriceBefore.HasValue && Model.SelectedTrip.PriceBefore > Model.SelectedTrip.Price)
+                            {
+                                <span class="text-lg text-gray-400 line-through mr-2">$@Model.SelectedTrip.PriceBefore.Value.ToString("F2")</span>
+                            }
+                            <span class="text-5xl font-bold text-primary-dark">$@Model.SelectedTrip.Price.ToString("F2")</span>
+                            <p class="text-gray-500" data-en="/ person" data-ar="/ للشخص" data-de="/ pro Person" data-ro="/ persoană" data-it="/ a persona">/ person</p>
+                        </div>
+
+                        <div class="info-section">
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <span class="font-bold" data-en="Duration" data-ar="المدة" data-de="Dauer" data-ro="Durată" data-it="Durata">Duration</span>
+                                    <p>@Model.SelectedTrip.DurationHours <span data-en="Hours" data-ar="ساعات" data-de="Stunden" data-ro="Ore" data-it="Ore">Hours</span></p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="font-bold" data-en="Location" data-ar="الموقع" data-de="Ort" data-ro="Locație" data-it="Posizione">Location</span>
+                                    <p class="truncate" data-en="@Model.SelectedTrip.LocationEn" data-ar="@Model.SelectedTrip.LocationAr" data-de="@Model.SelectedTrip.LocationDe" data-ro="@Model.SelectedTrip.LocationRo" data-it="@Model.SelectedTrip.LocationIt">@Model.SelectedTrip.LocationEn</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <a href="#" id="whatsapp-booking-link"
+                               data-trip-name-en="@Model.SelectedTrip.NameEn"
+                               data-trip-name-ar="@Model.SelectedTrip.NameAr"
+                               data-trip-name-de="@Model.SelectedTrip.NameDe"
+                               data-trip-name-ro="@Model.SelectedTrip.NameRo"
+                               data-trip-name-it="@Model.SelectedTrip.NameIt"
+                               class="btn-book-now w-full text-center">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                <span data-en="Book via WhatsApp" data-ar="احجز عبر واتساب" data-de="Buchen über WhatsApp" data-ro="Rezervă prin WhatsApp" data-it="Prenota via WhatsApp">Book via WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Other Trips Section -->
+@if (Model.OtherTrips.Any())
+{
+    <section class="py-16 lg:py-20 bg-white">
+        <!-- ... Other Trips content remains the same ... -->
+    </section>
+}
+
+@section Scripts {
+    <style>
+        :root {
+            --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+            --shadow-large: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+        }
+
+        .trip-hero {
+            height: 60vh;
+            min-height: 400px;
+            max-height: 500px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trip-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-large);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .content-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+            }
+
+        .details-heading {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            .details-heading::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                border-radius: 2px;
+                background-color: var(--accent-gold);
+            }
+
+        [dir="rtl"] .details-heading::after {
+            left: auto;
+            right: 0;
+        }
+
+        .list-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+            .list-heading.included {
+                color: #16a34a;
+            }
+
+            .list-heading.excluded {
+                color: #dc2626;
+            }
+
+        .styled-list {
+            list-style: none;
+            padding: 0;
+            space-y: 0.75rem;
+        }
+
+            .styled-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                color: #4b5563;
+            }
+
+        .booking-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-large);
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .booking-card:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+            }
+
+        .price-section {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: #f8fafc;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .info-section {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #4b5563;
+        }
+
+            .info-item i {
+                font-size: 1.25rem;
+                color: var(--primary-dark);
+                width: 20px;
+                text-align: center;
+            }
+
+            .info-item p {
+                font-size: 0.9rem;
+                color: #6b7280;
+            }
+
+        .btn-book-now {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: linear-gradient(45deg, var(--accent-gold), var(--accent-gold-dark));
+            color: var(--primary-dark);
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255,160,0,0.3);
+        }
+
+            .btn-book-now:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 7px 20px rgba(255,160,0,0.4);
+            }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingLink = document.getElementById('whatsapp-booking-link');
+            if (bookingLink) {
+                bookingLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const currentLang = localStorage.getItem('preferredLang') || 'en';
+                    const tripName = this.dataset['tripName' + currentLang.charAt(0).toUpperCase() + currentLang.slice(1)] || this.dataset.tripNameEn;
+
+                    const messageTemplates = {
+                        en: `Hello, I'm interested in booking the "${tripName}" trip.`,
+                        ar: `مرحباً، أنا مهتم بحجز رحلة "${tripName}".`,
+                        de: `Hallo, ich interessiere mich für die Buchung der Reise "${tripName}".`,
+                        ro: `Bună ziua, sunt interesat(ă) să rezerv excursia "${tripName}".`,
+                        it: `Salve, sono interessato/a a prenotare il viaggio "${tripName}".`
+                    };
+
+                    const message = encodeURIComponent(messageTemplates[currentLang] || messageTemplates.en);
+                    const whatsappNumber = "201006129818"; // Your WhatsApp Number
+                    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+                    window.open(url, '_blank');
+                });
+            }
+        });
+    </script>
+}

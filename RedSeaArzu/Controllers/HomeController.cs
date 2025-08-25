@@ -25,15 +25,30 @@ namespace RedSeaArzu.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> GetTripDetails(int id)
+        public async Task<IActionResult> TripDetails(int id)
         {
-            var trip = await _context.Trips.FindAsync(id);
-            if (trip == null)
+            var selectedTrip = await _context.Trips.FindAsync(id);
+
+            if (selectedTrip == null)
             {
                 return NotFound();
             }
-            return Json(trip);
+
+            var otherTrips = await _context.Trips
+                                           .Where(t => t.Id != id)
+                                           .OrderBy(r => Guid.NewGuid()) 
+                                           .Take(3)
+                                           .ToListAsync();
+
+            var viewModel = new TripDetailsViewModel
+            {
+                SelectedTrip = selectedTrip,
+                OtherTrips = otherTrips
+            };
+
+            return View(viewModel);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> SubmitTestimonial(Testimonial testimonial)

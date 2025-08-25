@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RedSeaArzu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96b9a6128ce181b09509e00af122b055f4a5b140")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffc459b04f261428d093319818f78ea9dd61303b")]
 [assembly: System.Reflection.AssemblyProductAttribute("RedSeaArzu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RedSeaArzu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

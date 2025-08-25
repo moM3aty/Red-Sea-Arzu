@@ -1,5 +1,5 @@
 wwwroot\css\admin.css
-wwwroot\js\main.js
+wwwroot\css\main.css
 wwwroot\css\social-icons.css
 wwwroot\favicon.ico
 wwwroot\images\1.JPG
@@ -16,7 +16,7 @@ wwwroot\images\about.jpg
 wwwroot\images\cover.jpg
 wwwroot\images\logo.jpg
 wwwroot\images\trips\c079caad-da91-4d67-bca9-99b356bed79d_1.JPG
-wwwroot\css\main.css
+wwwroot\js\main.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -74,3 +74,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\images\trips\0974eb2d-5545-465f-8d3f-228591fead9c_8.JPG

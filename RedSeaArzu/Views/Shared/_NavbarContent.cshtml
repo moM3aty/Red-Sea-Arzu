@@ -1,0 +1,23 @@
+﻿<div class="container mx-auto flex justify-between items-center">
+    <a asp-controller="Home" asp-action="Index" class="text-3xl font-bold brand-text flex items-center gap-2" dir="ltr">
+        <img src="~/images/logo.jpg" alt="Red Sea Arzu" width="80px;" style="border-radius:50%;">
+    </a>
+    <div class="hidden lg:flex items-center gap-5">
+        <a href="/#home" class="nav-link" data-en="Home" data-ar="الرئيسية" data-de="Startseite" data-ro="Acasă" data-it="Home">Home</a>
+        <a href="/#about" class="nav-link" data-en="About" data-ar="من نحن" data-de="Über uns" data-ro="Despre" data-it="Chi Siamo">About</a>
+        <a href="/#services" class="nav-link" data-en="Services" data-ar="الخدمات" data-de="Dienstleistungen" data-ro="Servicii" data-it="Servizi">Services</a>
+        <a href="/#trips" class="nav-link" data-en="Trips" data-ar="الرحلات" data-de="Reisen" data-ro="Excursii" data-it="Viaggi">Trips</a>
+        <a href="/#gallery" class="nav-link" data-en="Gallery" data-ar="المعرض" data-de="Galerie" data-ro="Galerie" data-it="Galleria">Gallery</a>
+        <a href="/#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا" data-de="Kontakt" data-ro="Contact" data-it="Contatti">Contact</a>
+    </div>
+    <div class="hidden lg:flex items-center gap-3">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag cursor-pointer" data-lang="en" title="English" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=EN';">
+        <img src="https://flagcdn.com/w40/eg.png" alt="Arabic" class="lang-flag cursor-pointer" data-lang="ar" title="العربية" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=AR';">
+        <img src="https://flagcdn.com/w40/de.png" alt="German" class="lang-flag cursor-pointer" data-lang="de" title="Deutsch" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=DE';">
+        <img src="https://flagcdn.com/w40/ro.png" alt="Romanian" class="lang-flag cursor-pointer" data-lang="ro" title="Română" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=RO';">
+        <img src="https://flagcdn.com/w40/it.png" alt="Italian" class="lang-flag cursor-pointer" data-lang="it" title="Italiano" onerror="this.onerror=null;this.src='https://placehold.co/40x27/eee/ccc?text=IT';">
+    </div>
+    <button id="mobile-menu-button" class="lg:hidden text-white text-3xl z-[110]">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>

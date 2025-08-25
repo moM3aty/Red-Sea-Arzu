@@ -1,12 +1,10 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
-    const tripModal = document.getElementById('trip-modal');
-    const modalContent = document.getElementById('modal-content');
+    // Element selectors
     const navbar = document.getElementById('navbar');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const closeMobileMenuButton = document.getElementById('close-mobile-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
     const langFlags = document.querySelectorAll('.lang-flag');
@@ -18,69 +16,81 @@
     const galleryContainer = document.querySelector('.gallery-container');
     const whatsappFab = document.getElementById('whatsapp-fab');
 
-    const supportedLanguages = ['en', 'ar', 'de', 'ro'];
+    // Language settings
+    const supportedLanguages = ['en', 'ar', 'de', 'ro', 'it'];
     let currentLang = localStorage.getItem('preferredLang') || 'en';
 
+    // Multilingual messages
     const messages = {
-        fillFields: { en: 'Please fill all fields.', ar: 'يرجى ملء جميع الحقول.', de: 'Bitte füllen Sie alle Felder aus.', ro: 'Vă rugăm să completați toate câmpurile.' },
-        redirecting: { en: 'Redirecting to WhatsApp...', ar: 'جارٍ التحويل إلى واتساب...', de: 'Weiterleitung zu WhatsApp...', ro: 'Redirecționare către WhatsApp...' },
-        invalidEmail: { en: 'Please enter a valid email.', ar: 'يرجى إدخال بريد إلكتروني صحيح.', de: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', ro: 'Vă rugăm să introduceți un email valid.' },
-        reviewSubmitted: { en: 'Thank you for your review!', ar: 'شكراً لك على رأيك!', de: 'Vielen Dank für Ihre Bewertung!', ro: 'Mulțumim pentru recenzia ta!' },
-        fillReviewFields: { en: 'Please fill all review fields.', ar: 'يرجى ملء جميع حقول الرأي.', de: 'Bitte füllen Sie alle Bewertungsfelder aus.', ro: 'Vă rugăm să completați toate câmpurile recenziei.' }
+        fillFields: { en: 'Please fill all fields.', ar: 'يرجى ملء جميع الحقول.', de: 'Bitte füllen Sie alle Felder aus.', ro: 'Vă rugăm să completați toate câmpurile.', it: 'Si prega di compilare tutti i campi.' },
+        redirecting: { en: 'Redirecting to WhatsApp...', ar: 'جارٍ التحويل إلى واتساب...', de: 'Weiterleitung zu WhatsApp...', ro: 'Redirecționare către WhatsApp...', it: 'Reindirizzamento a WhatsApp...' },
+        invalidEmail: { en: 'Please enter a valid email.', ar: 'يرجى إدخال بريد إلكتروني صحيح.', de: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', ro: 'Vă rugăm să introduceți un email valid.', it: 'Inserisci un\'email valida.' },
+        reviewSubmitted: { en: 'Thank you for your review!', ar: 'شكراً لك على رأيك!', de: 'Vielen Dank für Ihre Bewertung!', ro: 'Mulțumim pentru recenzia ta!', it: 'Grazie per la tua recensione!' },
+        fillReviewFields: { en: 'Please fill all review fields.', ar: 'يرجى ملء جميع حقول الرأي.', de: 'Bitte füllen Sie alle Bewertungsfelder aus.', ro: 'Vă rugăm să completați toate câmpurile recenziei.', it: 'Si prega di compilare tutti i campi della recensione.' }
     };
 
+    // Initialize Animations on Scroll
     AOS.init({
         duration: 800,
         once: true,
         offset: 50,
     });
 
+    // Navbar scroll effect
     if (navbar) {
+        if (!document.querySelector('.hero-section')) {
+            navbar.classList.add('nav-scrolled');
+        }
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-slate-800/80', 'backdrop-blur-sm', 'shadow-lg');
+                navbar.classList.add('nav-scrolled');
             } else {
-                navbar.classList.remove('bg-slate-800/80', 'backdrop-blur-sm', 'shadow-lg');
+                if (document.querySelector('.hero-section')) {
+                    navbar.classList.remove('nav-scrolled');
+                }
             }
         });
     }
-    if (mobileMenuButton && mobileMenu && closeMobileMenuButton) {
-        const menuIcon = mobileMenuButton.querySelector('i');
 
-        const openMenu = () => {
-            mobileMenu.classList.add('is-open');
-            menuIcon.classList.replace('fa-bars', 'fa-times');
-            document.body.style.overflow = 'hidden';
-        };
+    // Mobile menu functionality
+    if (mobileMenuButton && mobileMenu) {
+        const menuIcon = mobileMenuButton.querySelector('i');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
 
         const closeMenu = () => {
             mobileMenu.classList.remove('is-open');
-            menuIcon.classList.replace('fa-times', 'fa-bars');
             document.body.style.overflow = '';
+            if (menuIcon) menuIcon.classList.replace('fa-times', 'fa-bars');
         };
 
-        const toggleMenu = () => {
-            const isOpen = mobileMenu.classList.contains('is-open');
-            if (isOpen) {
+        const openMenu = () => {
+            mobileMenu.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            if (menuIcon) menuIcon.classList.replace('fa-bars', 'fa-times');
+        };
+
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('is-open')) {
                 closeMenu();
             } else {
                 openMenu();
             }
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMenu);
-
-        closeMobileMenuButton.addEventListener('click', closeMenu);
-
-        const mobileNavLinks = mobileMenu.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
         });
 
-    } else {
-        console.error('Mobile menu elements not found. Please check the IDs in your HTML file.');
+        if (closeMobileMenuButton) {
+            closeMobileMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMenu();
+            });
+        }
+
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
     }
 
+
+    // Language switching function
     function updateLanguage(lang) {
         if (!supportedLanguages.includes(lang)) return;
 
@@ -90,22 +100,17 @@
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
         document.querySelectorAll('[data-en]').forEach(el => {
-            const translation = el.getAttribute(`data-${lang}`);
+            const translation = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en');
             if (translation) el.innerHTML = translation;
         });
 
         document.querySelectorAll('[data-placeholder-en]').forEach(el => {
-            const translation = el.getAttribute(`data-${lang}-placeholder`);
+            const placeholderLang = `data-placeholder-${lang}`;
+            const translation = el.getAttribute(placeholderLang) || el.getAttribute('data-placeholder-en');
             if (translation) el.placeholder = translation;
         });
 
-        document.querySelectorAll('.trip-card').forEach(card => {
-            const nameEl = card.querySelector('.trip-card-name');
-            if (nameEl) nameEl.innerText = nameEl.dataset[lang] || nameEl.dataset['en'];
-        });
-
-        if (lang === 'ar') document.body.classList.add('font-cairo');
-        else document.body.classList.remove('font-cairo');
+        document.body.classList.toggle('font-cairo', lang === 'ar');
 
         langFlags.forEach(flag => {
             flag.classList.toggle('active', flag.dataset.lang === lang);
@@ -113,100 +118,36 @@
     }
 
     langFlags.forEach(flag => {
-        flag.addEventListener('click', () => updateLanguage(flag.dataset.lang));
-    });
-
-    function openTripModal(tripId) {
-        if (!tripId) return;
-
-        modalContent.innerHTML = `<div class="w-full h-96 flex items-center justify-center"><i class="fas fa-spinner fa-spin text-4xl text-primary-dark"></i></div>`;
-        tripModal.classList.remove('hidden');
-        tripModal.classList.add('flex');
-        setTimeout(() => {
-            tripModal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95', 'opacity-0');
-        }, 10);
-
-        fetch(`/Home/GetTripDetails?id=${tripId}`)
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.json();
-            })
-            .then(data => {
-                const langSuffix = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
-                const name = data[`name${langSuffix}`];
-                const description = data[`description${langSuffix}`];
-                const imageUrl = data.imageUrl || 'https://placehold.co/600x800/00acc1/ffffff?text=Arzu+Trip';
-
-                modalContent.innerHTML = `
-                    <img src="${imageUrl}" alt="${name}" class="modal-image">
-                    <div class="modal-content-wrapper relative">
-                        <button id="close-modal" class="close-button">&times;</button>
-                        <h2 class="modal-title">${name}</h2>
-                        <p class="modal-price">$${data.price.toFixed(2)}</p>
-                        <p class="modal-description">${description}</p>
-                        <a href="#contact" class="modal-book-btn book-now-btn">
-                            <span data-en="Book Now" data-ar="احجز الآن" data-de="Jetzt buchen" data-ro="Rezervă acum">Book Now</span>
-                        </a>
-                    </div>`;
-
-                updateLanguage(currentLang);
-                document.getElementById('close-modal').addEventListener('click', closeTripModal);
-                document.querySelector('.book-now-btn').addEventListener('click', () => closeTripModal());
-            })
-            .catch(error => {
-                console.error('Error fetching trip details:', error);
-                modalContent.innerHTML = `<div class="w-full p-8 text-center"><p class="text-red-500">Sorry, we couldn't load the trip details.</p><button id="close-modal" class="btn-wave mt-4">Close</button></div>`;
-                document.getElementById('close-modal').addEventListener('click', closeTripModal);
-            });
-    }
-
-    function closeTripModal() {
-        modalContent.classList.add('scale-95', 'opacity-0');
-        tripModal.classList.add('opacity-0');
-        setTimeout(() => {
-            tripModal.classList.add('hidden');
-            tripModal.classList.remove('flex');
-        }, 300);
-    }
-
-    document.querySelectorAll('.details-btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-            const tripId = this.closest('.trip-card')?.dataset.tripId;
-            openTripModal(tripId);
+        flag.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateLanguage(flag.dataset.lang)
         });
     });
 
-    tripModal.addEventListener('click', (e) => {
-        if (e.target === tripModal) closeTripModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape" && !tripModal.classList.contains('hidden')) closeTripModal();
-    });
-
+    // Scroll-based functionality
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
-        else navbar.classList.remove('nav-scrolled');
-
+        // Active nav link highlighting
         let currentSection = '';
         document.querySelectorAll('section[id]').forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 90) currentSection = section.getAttribute('id');
+            if (pageYOffset >= section.offsetTop - 120) {
+                currentSection = section.getAttribute('id');
+            }
         });
-
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSection) link.classList.add('active');
+            link.classList.toggle('active', link.getAttribute('href').includes(currentSection));
         });
 
-        if (window.scrollY > 300) scrollToTopBtn.classList.remove("hidden");
-        else scrollToTopBtn.classList.add("hidden");
+        // Scroll to top button visibility
+        if (scrollToTopBtn) {
+            scrollToTopBtn.classList.toggle("hidden", window.scrollY <= 300);
+        }
     });
 
-    scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
 
+    // Notification handler
     function showNotification(message, type = 'success') {
         if (!notification || !notificationMessage) return;
         notificationMessage.textContent = message;
@@ -221,6 +162,7 @@
             setTimeout(() => notification.classList.add('hidden'), 300);
         }, 3000);
     }
+
 
     function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -317,12 +259,17 @@
         };
         galleryOverlay.addEventListener('click', closeViewer);
     }
-
     if (whatsappFab) {
         whatsappFab.addEventListener('click', () => {
             const whatsappNumber = "201006129818";
-            const defaultMessage = "Hello, I'm interested in your trips.";
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;
+            const defaultMessage = {
+                en: "Hello, I'm interested in your trips.",
+                ar: "مرحباً، أنا مهتم برحلاتكم.",
+                de: "Hallo, ich interessiere mich für Ihre Reisen.",
+                ro: "Bună, sunt interesat(ă) de excursiile dvs.",
+                it: "Salve, sono interessato/a ai vostri viaggi."
+            };
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage[currentLang] || defaultMessage['en'])}`;
             window.open(whatsappURL, "_blank");
         });
     }

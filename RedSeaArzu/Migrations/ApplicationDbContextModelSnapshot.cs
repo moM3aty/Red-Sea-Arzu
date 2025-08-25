@@ -274,11 +274,63 @@ namespace RedSeaArzu.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DescriptionIt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DescriptionRo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("DurationHours")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ExcludesAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExcludesDe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExcludesEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExcludesIt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExcludesRo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncludesAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncludesDe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncludesEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncludesIt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IncludesRo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationDe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationIt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationRo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameAr")
@@ -293,12 +345,19 @@ namespace RedSeaArzu.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameIt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameRo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<decimal?>("PriceBefore")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 

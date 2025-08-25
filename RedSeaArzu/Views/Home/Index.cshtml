@@ -75,12 +75,11 @@
     </div>
 </section>
 
-
 <section id="trips" class="py-20 bg-slate-50 section-bg-pattern">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Our Signature Trips" data-ar="رحلاتنا المميزة">رحلاتنا المميزة</h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Embark on an adventure that speaks to your soul." data-ar="انطلق في مغامرة تخاطب روحك.">انطلق في مغامرة تخاطب روحك.</p>
+            <h2 class="section-heading text-3xl md:text-4xl" data-aos="fade-up" data-en="Our Signature Trips" data-ar="رحلاتنا المميزة" data-de="Unsere Signature-Reisen" data-ro="Excursiile Noastre Semnătură" data-it="I Nostri Viaggi Esclusivi">رحلاتنا المميزة</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Embark on an adventure that speaks to your soul." data-ar="انطلق في مغامرة تخاطب روحك." data-de="Begeben Sie sich auf ein Abenteuer, das Ihre Seele anspricht." data-ro="Îmbarcați-vă într-o aventură care vorbește sufletului dumneavoastră." data-it="Parti per un'avventura che parla alla tua anima.">انطلق في مغامرة تخاطب روحك.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
             @foreach (var trip in Model.Trips)
@@ -90,20 +89,19 @@
                         <img src="@(string.IsNullOrEmpty(trip.ImageUrl) ? "https://placehold.co/600x600/0369a1/ffffff?text=Arzu" : trip.ImageUrl)" alt="@trip.NameEn" class="card-image">
 
                         <div class="hover-content">
-                            <p class="trip-card-desc" data-en="@trip.DescriptionEn" data-ar="@trip.DescriptionAr" data-de="@trip.DescriptionDe" data-ro="@trip.DescriptionRo">@trip.DescriptionEn</p>
-                            <button class="btn-trip details-btn" data-en="Details" data-ar="التفاصيل" data-de="Details" data-ro="Detalii">التفاصيل</button>
+                            <p class="trip-card-desc" data-en="@trip.DescriptionEn" data-ar="@trip.DescriptionAr" data-de="@trip.DescriptionDe" data-ro="@trip.DescriptionRo" data-it="@trip.DescriptionIt">@trip.DescriptionEn</p>
+                            <a asp-controller="Home" asp-action="TripDetails" asp-route-id="@trip.Id" class="btn-trip details-btn" data-en="Details" data-ar="التفاصيل" data-de="Details" data-ro="Detalii" data-it="Dettagli">التفاصيل</a>
                         </div>
                     </div>
 
                     <div class="static-title">
-                        <h3 class="trip-card-name" data-en="@trip.NameEn" data-ar="@trip.NameAr" data-de="@trip.NameDe" data-ro="@trip.NameRo">@trip.NameEn</h3>
+                        <h3 class="trip-card-name" data-en="@trip.NameEn" data-ar="@trip.NameAr" data-de="@trip.NameDe" data-ro="@trip.NameRo" data-it="@trip.NameIt">@trip.NameEn</h3>
                     </div>
                 </div>
             }
         </div>
     </div>
 </section>
-
 <section id="testimonials" class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
@@ -211,7 +209,3 @@
     </div>
 </section>
 
-<div id="trip-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 transition-opacity duration-300">
-    <div id="modal-content" class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
-    </div>
-</div>
