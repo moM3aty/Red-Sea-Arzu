@@ -27,7 +27,7 @@ namespace RedSeaArzu.Utilities
                 Email = "admin@redseaarzu.com",
             };
 
-            string userPassword = "AdminPassword123!";
+            string userPassword = "Your_Password";
             var user = await userManager.FindByEmailAsync(powerUser.Email);
 
             if (user == null)
